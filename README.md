@@ -24,3 +24,17 @@ FROM calc_result cr
 ORDER BY created_at  DESC
 LIMIT 10;
 ```
+
+## Запуск тестов
+### 1. Создайте локальное окружение:
+```python3 -m venv product-cost``` для примера.
+
+### 2. Установить зависимости 
+```pip install poetry```
+```poetry install```
+
+### 3. Поднять pg:
+```docker run --name test-pg -p 5432:5432 -e POSTGRES_USER=test_user -e POSTGRES_PASSWORD=test_password -e POSTGRES_DB=meta_test_db -d postgres```
+
+### 4. Запуск тестов: 
+```PC_ENV=.test.env pytest```
